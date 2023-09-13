@@ -9,7 +9,7 @@ function Main() {
         <div className='mx-auto max-w-[930px]'>
             <RuleSet/>
             <ListTitle/>
-            <ListVoting/>
+            <ListVoting/> 
         </div>
          
     </main>
