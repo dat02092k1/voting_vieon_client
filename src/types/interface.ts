@@ -31,3 +31,10 @@ export interface Rapper {
       type: String,
   }
 }
+
+export type RouteType = {
+  path: string;
+  component: any;
+  exact: boolean;
+  isPublic: boolean;
+};
