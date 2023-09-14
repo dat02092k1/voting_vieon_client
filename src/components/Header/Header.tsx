@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { ShowContext } from '../../App';
 
 function Header() {
+    const {show, setShow} = useContext(ShowContext);  
+
+    const handlePopup = () => {
+        setShow(!show);  
+    }
   return (
     <div className='z-10 p-4 relative text-yellow-500'>
-        <div className='absolute w-[28px] h-[28px] lg:w-[32px] lg:h-[32px] right-3 top-3 cursor-pointer opacity-50'>
+        <div onClick={handlePopup} className='absolute w-[28px] h-[28px] lg:w-[32px] lg:h-[32px] right-3 top-3 cursor-pointer opacity-50'>
                 <img src="https://static2.vieon.vn/voting/static/media/user.5ff4e35663aa679785c5.png" alt="" /> 
         </div>
 

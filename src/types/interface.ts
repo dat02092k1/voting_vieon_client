@@ -16,3 +16,8 @@ export interface Vote {
 export interface CounterState {
   value: number;
 }
+
+export interface ShowContextType {
+  setShow(value: boolean): void;
+  show: boolean;
+}

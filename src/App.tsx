@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { createContext, useState } from "react";
 import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
 import Footer from "./components/Footer/Footer";
+import Popup from "./components/popup/Popup";
+import { ShowContextType } from "./types/interface";
+
+export const ShowContext = createContext<ShowContextType>(); // Export the ShowContext
 
 function App() {
-  const [count, setCount] = useState(0);
-
+  const [show, setShow] = useState(false);
+   
   return (
     <>
       <div className="bg-gradient-to-b from-[#000] to-[#250631] h-full relative w-full font-[Roboto] scrollbar">
@@ -28,9 +32,14 @@ function App() {
         </picture>
       </div>
 
+      <ShowContext.Provider value={{show, setShow}}>
       <Header />
+      <Popup/> 
+      </ShowContext.Provider>
+    
       <Main />
       <Footer />
+       
     </>
   );
 }
