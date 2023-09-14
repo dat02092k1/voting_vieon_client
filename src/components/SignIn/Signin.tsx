@@ -1,8 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../../store/hook";
+import { login } from "../../store/features/api/apiRequest";
+import { useNavigate } from "react-router-dom";
 
 function Signin() {
-  const [username, setUsername] = useState("");
+  const dispatch = useAppDispatch();
+  const user = useAppSelector((state) => state.user);       
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  //   useEffect(() => {
+  //     dispatch(login());
+  //   }, [dispatch])
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const data = {
+      email: email,
+      password: password,
+    };
+    
+    await dispatch(login(data));
+    console.log(user);
+    if (!user.loading && user.currentUser) {
+        console.log(user.loading);
+        navigate("/");
+    }
+  };
   return (
     <div className="mx-auto w-full sm:w-[680px] lg:w-[720px] 2xl:w-[900px] overflow-y-auto overflow-x-hidden scrollbar bg-[#000] h-min max-h-[90vh] relative z-20">
       <button className="absolute top-2 right-2 w-4 h-4 z-10" title="Close">
@@ -55,8 +79,9 @@ function Signin() {
               <input
                 type="text"
                 className="block w-full h-11 lg:h-14 text-sm lg:text-lg text-white font-normal border-none bg-transparent focus-visible:outline-none"
-                placeholder="Tên đăng nhập"
-                value={username}
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
           </div>
@@ -77,6 +102,7 @@ function Signin() {
                 className="block w-full h-11 lg:h-14 text-sm lg:text-lg text-white font-normal border-none bg-transparent focus-visible:outline-none"
                 placeholder="Password"
                 value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
 
@@ -92,17 +118,17 @@ function Signin() {
             </div>
           </div>
 
-          <div className="flex flex-col justify-center items-center w-full mb-4 lg:mb-6">  
-            <button className="text-white bg-center bg-no-repeat h-[40px] w-[160px] lg:h-[60px] lg:w-[248px] uppercase font-bold text-[14px] lg:text-[22px] enabled:transition enabled:hover:bg-[#0acde7] border-2 border-[#0ee2ff] rounded"> 
-                Đăng nhập 
+          <div className="flex flex-col justify-center items-center w-full mb-4 lg:mb-6">
+            <button onClick={handleLogin} className="text-white bg-center bg-no-repeat h-[40px] w-[160px] lg:h-[60px] lg:w-[248px] uppercase font-bold text-[14px] lg:text-[22px] enabled:transition enabled:hover:bg-[#0acde7] border-2 border-[#0ee2ff] rounded">
+              Đăng nhập
             </button>
 
-            <div className="flex text-[14px] lg:text-[18px] mt-3"> 
-            <span className="text-white mr-2">Bạn chưa có tài khoản?</span>
+            <div className="flex text-[14px] lg:text-[18px] mt-3">
+              <span className="text-white mr-2">Bạn chưa có tài khoản?</span>
 
-            <span className="text-[#4facfe] hover:underline cursor-pointer flex w-fit font-bold">
-            Đăng ký ngay 
-            </span>
+              <span className="text-[#4facfe] hover:underline cursor-pointer flex w-fit font-bold">
+                Đăng ký ngay
+              </span>
             </div>
           </div>
         </form>
