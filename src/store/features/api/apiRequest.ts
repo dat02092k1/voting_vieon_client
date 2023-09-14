@@ -12,10 +12,9 @@ export const login = createAsyncThunk(
 
 export const getRappers = createAsyncThunk(
     'rapper/get',
-    async (data: any) => {
-        console.log(data);
-        
-        const res = await axios.post(`${utilContainer.baseUrl}user/login`, data);
-        return res.data.data.metadata.user; 
+    async () => {        
+        const res = await axios.get(`${utilContainer.baseUrl}contestant`);
+        console.log(res.data.data.rappers)
+        return res.data.data.rappers; 
     }
 )

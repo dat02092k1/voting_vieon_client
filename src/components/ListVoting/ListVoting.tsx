@@ -1,12 +1,18 @@
 import React from "react";
+import { useAppSelector } from "../../store/hook";
 
 function ListVoting() {
+  const rappers = useAppSelector((state) => state.rappers.rappers);
+  console.log(rappers);
   return (
     <div className="mx-auto w-full md:pt-[20px] px-4">
       <div className="bg-block-2 border-[#4facfe] border-[2px] rounded">
         <div className="max-w-full pr-2">
           <div className="pb-3 lg:pb-0 px-[1.5px]">
             <div className="flex space-x-2 md:space-x-4 justify-center items-center py-3 md:py-6 px-3 md:px-8 hover:bg-radial-bottom bg-blend-multiply">
+              {rappers.map((rapper, index) => console.log(rapper)) && <div className="flex-none text-[36px]font-bold md:text-[56px] text-white md:w-8 text-center flex items-center mr-3 md:mr-5">
+                1
+              </div>}
               <div className="flex-none text-[36px]font-bold md:text-[56px] text-white md:w-8 text-center flex items-center mr-3 md:mr-5">
                 1
               </div>
