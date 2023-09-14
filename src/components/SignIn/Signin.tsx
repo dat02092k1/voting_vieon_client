@@ -9,9 +9,16 @@ function Signin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  //   useEffect(() => {
-  //     dispatch(login());
-  //   }, [dispatch])
+    // useEffect(() => {
+    //   dispatch(login());
+    // }, [dispatch])
+
+    useEffect(() => {
+        if (user.currentUser) {
+          console.log('User has logged in:', user.currentUser);
+          navigate("/");
+        }
+      }, [user.currentUser, navigate]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -21,13 +28,9 @@ function Signin() {
     };
     
     await dispatch(login(data));
-    console.log(user);
-    if (!user.loading && user.currentUser) {
-        console.log(user.loading);
-        navigate("/");
-    }
   };
-  return (
+
+return (
     <div className="mx-auto w-full sm:w-[680px] lg:w-[720px] 2xl:w-[900px] overflow-y-auto overflow-x-hidden scrollbar bg-[#000] h-min max-h-[90vh] relative z-20">
       <button className="absolute top-2 right-2 w-4 h-4 z-10" title="Close">
         <svg

@@ -4,6 +4,14 @@ import { utilContainer } from '../../../shared/constants/utilContainer';
 
 export const login = createAsyncThunk(
     'user/login',
+    async (data: any) => {        
+        const res = await axios.post(`${utilContainer.baseUrl}user/login`, data);
+        return res.data.data.metadata; 
+    }
+)
+
+export const getRappers = createAsyncThunk(
+    'rapper/get',
     async (data: any) => {
         console.log(data);
         

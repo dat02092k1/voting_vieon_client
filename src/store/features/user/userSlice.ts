@@ -25,8 +25,10 @@ export const userSlice = createSlice({
   extraReducers: (builder) => {
     builder
     .addCase(login.fulfilled, (state, action) => {
+      console.log('2')
       state.loading = false; 
-      state.currentUser = action.payload; 
+      state.currentUser = action.payload.user;
+      localStorage.setItem("token", action.payload.token) 
     })
     .addCase(login.pending, (state) => {
       state.loading = true;
