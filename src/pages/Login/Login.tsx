@@ -1,11 +1,14 @@
 import {useEffect} from 'react'
+import BaseScreen from '../../components/BaseScreen/BaseScreen'
+import Signin from '../../components/SignIn/Signin'
 
 function Login() {
-    useEffect(() => {
-        console.log('login');
-    }, []);
+    
   return (
-    <div>Login</div>
+    <>
+    <BaseScreen/>
+    <Signin/>
+    </>
   )
 }
 
