@@ -21,3 +21,13 @@ export interface ShowContextType {
   setShow(value: boolean): void;
   show: boolean;
 }
+
+export interface Rapper {
+  name: String,
+  votes: [],
+  imgUrl: String,
+  description: String,
+  candicateId: {
+      type: String,
+  }
+}
