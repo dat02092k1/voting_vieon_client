@@ -1,14 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../../store'
-import { UsersState } from '../../../types/interface'
-import { login } from '../api/apiRequest'
+import { Rapper, UsersState } from '../../../types/interface'
+import { logOut, login } from '../api/apiRequest'
+import { utilFuncs } from '../../../utils/utils'
+import { utilContainer } from '../../../shared/constants/utilContainer'
  
 // Define the initial state using that type
 const initialState = {
-  currentUser: null,
+  currentUser: null as UsersState | null,
   loading: false,
   error: false,
+  loggedIn: false,
 };
 
 export const userSlice = createSlice({
@@ -20,24 +23,41 @@ export const userSlice = createSlice({
     logout: (state) => {
       state.currentUser = null;
       state.error = false;
+      state.loggedIn = false; 
     }
   },
   extraReducers: (builder) => {
     builder
     .addCase(login.fulfilled, (state, action) => {
-      console.log('2')
       state.loading = false; 
       state.currentUser = action.payload.user;
-      localStorage.setItem("token", action.payload.token) 
+      utilFuncs.setStorage(utilContainer.HEADER.AUTHORIZATION, action.payload.token);
+      state.loggedIn = true;
     })
     .addCase(login.pending, (state) => {
       state.loading = true;
+      state.loggedIn = false;
     })
     .addCase(login.rejected, (state, action) => {
       console.log(action);  
       state.loading = false;
+      state.error = true;    
+      state.loggedIn = false; 
+    })
+    .addCase(logOut.fulfilled, (state, action) => {
+      console.log(action); 
+      state.loading = false; 
       state.currentUser = null;
-      state.error = false;    
+      utilFuncs.clearStorage();  
+      state.loggedIn = false;
+    })
+    .addCase(logOut.pending, (state) => {
+      state.loading = true;
+    })
+    .addCase(logOut.rejected, (state, action) => {
+      console.log(action);  
+      state.loading = false;
+      state.error = true;    
     })
   }
 })

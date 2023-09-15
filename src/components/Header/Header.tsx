@@ -1,9 +1,10 @@
 import React, { useContext } from 'react'
 import { ShowContext } from '../../App';
+import { useAppSelector } from '../../store/hook';
 
 function Header() {
     const {show, setShow} = useContext(ShowContext);  
-
+     
     const handlePopup = () => {
         setShow(!show);  
     }

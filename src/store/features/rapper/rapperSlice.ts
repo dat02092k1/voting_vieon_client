@@ -6,7 +6,7 @@ import { getRappers, login } from '../api/apiRequest'
  
 // Define the initial state using that type
 const initialState = {
-  rappers: [],
+  rappers: [] as Rapper[],
   loading: false,
   error: false,
 };
