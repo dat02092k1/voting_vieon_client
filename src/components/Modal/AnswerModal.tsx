@@ -1,13 +1,28 @@
 import React from "react";
 import CloseBtn from "../Button/CloseBtn/CloseBtn";
 import { ShowModal } from "../Main/Main";
+import { AnswerModalProps } from "../../types/interface";
+import { useAppDispatch, useAppSelector } from "../../store/hook";
+import { vote } from "../../store/features/api/apiRequest";
 
-function AnswerModal() {
+
+const AnswerModal:React.FC = (props: any) => {
+  const dispatch = useAppDispatch();
+  const currentUser = useAppSelector((state) => state.user.currentUser);
+
   const {show, setShow} = React.useContext(ShowModal);
   const handleCloseModal = () => {
     setShow(!show);
   }
-
+ 
+  const handleVote = async () => { 
+    const data = {
+      'user': currentUser,
+      'candicateId': props.candicateId
+    }
+    await dispatch(vote(data)); 
+    handleCloseModal(); 
+  }
   return (
     <div className="max-w-xl mx-auto w-[94%] lg:w-[540px] bg-[#000] border-[2px] border-[#0ee2ff] relative z-20 p-4 lg:p-7">
       <div className="bg-gradient-to-b from-white to-[#60c7f6] bg-clip-text text-transparent text-[28px] lg:text-28 uppercase text-center font-bold mb-[12px] lg:mb-[32px]">
@@ -15,7 +30,7 @@ function AnswerModal() {
       </div>
 
       <div className="text-white text-center text-sm lg:text-[18px] lg:text-28 mb-[12px] lg:mb-[24px] flex items-end justify-center gap-3">
-        <button className="text-white bg-center bg-no-repeat h-[40px]  lg:h-[60px] lg:w-[148px] uppercase font-bold text-[14px] lg:text-[22px] enabled:transition enabled:hover:bg-[#0acde7] border-2 border-[#0ee2ff] rounded">
+        <button onClick={handleVote} className="text-white bg-center bg-no-repeat h-[40px]  lg:h-[60px] lg:w-[148px] uppercase font-bold text-[14px] lg:text-[22px] enabled:transition enabled:hover:bg-[#0acde7] border-2 border-[#0ee2ff] rounded">
           Có
         </button>
 

@@ -29,3 +29,11 @@ export const logOut = createAsyncThunk(
     }
 )
 
+export const vote = createAsyncThunk(
+    'vote',
+    async (data: any) => {        
+        const headers = utilFuncs.setHeader();
+        const res = await axios.post(`${utilContainer.baseUrl}vote`, data, {headers});
+        return res.data;
+    }
+)

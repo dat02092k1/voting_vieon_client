@@ -2,6 +2,7 @@ import React from 'react'
 import { Rapper } from '../../types/interface'
 import AnswerModal from '../Modal/AnswerModal'
 import { ShowModal } from '../Main/Main'
+import Modal from '../Modal/Modal'
 
 interface RapperProp {
   rapper: Rapper 
@@ -11,10 +12,14 @@ interface RapperProp {
 const RapperItem:React.FC<RapperProp> = ({rapper, index}) => {
   const {show, setShow} = React.useContext(ShowModal);
   const handleVote = () => {
+    console.log('trigger', rapper._id)
     setShow(!show);
   }
+
+   
   return (
     <>
+    
     <div className="flex space-x-2 md:space-x-4 justify-center items-center py-3 md:py-6 px-3 md:px-8 hover:bg-radial-bottom bg-blend-multiply">
               
               <div className="flex-none text-[36px]font-bold md:text-[56px] text-white md:w-8 text-center flex items-center mr-3 md:mr-5">

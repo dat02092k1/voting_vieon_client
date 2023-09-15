@@ -30,7 +30,7 @@ function Main() {
             <ListTitle/>
            
             <ShowModal.Provider value={{show, setShow}}>
-            <Modal/>
+             
             <ListVoting/> 
              
             </ShowModal.Provider>
