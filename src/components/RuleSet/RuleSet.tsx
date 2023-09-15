@@ -3,7 +3,8 @@ import { useAppSelector } from "../../store/hook";
 
 function RuleSet() {
   const currentUser = useAppSelector((state) => state.user.currentUser);
-  console.log(currentUser);
+   console.log('can improve cho nay bi rerender'); 
+   
   const [voteRemaining, setVoteRemaining] = useState(currentUser);
   return (
     <div className="flex justify-center relative h-full -translate-y-4 lg:-translate-y-12">

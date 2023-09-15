@@ -23,6 +23,7 @@ export interface ShowContextType {
   show: boolean;
 }
 
+
 export interface Rapper {
   name: String,
   votes: [],
