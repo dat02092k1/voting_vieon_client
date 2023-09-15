@@ -6,6 +6,7 @@ export interface UsersState {
   votesRemaining: number; // in day
   votes: Vote[];
   lastVoteDate: Date;
+  id: String; 
 }
 
 export interface Vote {
@@ -30,6 +31,7 @@ export interface Rapper {
   candicateId: {
       type: String,
   }
+  id: String
 }
 
 export type RouteType = {

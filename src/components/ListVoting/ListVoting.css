@@ -1,0 +1,8 @@
+.list-voting::-webkit-scrollbar {
+    display: none;
+}
+
+.list-voting {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
