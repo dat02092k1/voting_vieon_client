@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { useAppSelector } from "../../store/hook";
 
 function RuleSet() {
-  const [voteRemaining, setVoteRemaining] = useState(0);
+  const currentUser = useAppSelector((state) => state.user.currentUser);
+  console.log(currentUser);
+  const [voteRemaining, setVoteRemaining] = useState(currentUser);
   return (
     <div className="flex justify-center relative h-full -translate-y-4 lg:-translate-y-12">
       <img
@@ -13,7 +16,7 @@ function RuleSet() {
         <div className="leading-none">
           Bạn có
           <span className="px-1 lg:px-2 text-[13px] lg:text-4xl">
-            {voteRemaining} lượt Bình chọn / ngày
+            {currentUser?.votesRemaining ?? 0} lượt Bình chọn / ngày
           </span>
         </div>
 
