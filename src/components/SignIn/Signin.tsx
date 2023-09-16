@@ -70,7 +70,7 @@ return (
           <div className="block w-full focus-visible:border-[#4facfe] mb-4 lg:mb-6">
             <span
               className="block text-sm lg:text-lg text-white mb-2"
-              for="userName"
+              htmlFor="userName"
             >
               Tên đăng nhập
             </span>
@@ -89,7 +89,7 @@ return (
           <div className="block w-full mb-4 lg:mb-6">
             <span
               className="block text-sm lg:text-lg text-white mb-2"
-              for="passWord"
+              htmlFor="passWord"
             >
               Mật khẩu
             </span>
