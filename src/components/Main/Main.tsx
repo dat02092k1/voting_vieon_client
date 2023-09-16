@@ -7,6 +7,7 @@ import { getRappers } from '../../store/features/api/apiRequest'
 import AnswerModal from '../Modal/AnswerModal'
 import { ShowContextType } from '../../types/interface'
 import Modal from '../Modal/Modal'
+import { useRappers } from '../../api/api'
 
 const defaultSetShow = (value: boolean) => {
   console.log(`Default setShow implementation: ${value}`);
@@ -19,10 +20,16 @@ function Main() {
   const dispatch = useAppDispatch();
   const [show, setShow] = useState<boolean>(false);
 
-  useEffect((
-  ) => {
+  useEffect(() => {
     dispatch(getRappers());
-  }, []);
+  }, [])
+  const {isLoading, error, data} = useRappers();
+
+  if (isLoading) return 'Loading...';
+
+  if (error) console.log('An error occurred while fetching the user data ', error);
+
+  console.log('data', data);
   return (
     <main className='relative z-10 lg:px-0'>
         <div className='mx-auto max-w-[930px]'>
