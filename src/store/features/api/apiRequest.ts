@@ -37,3 +37,12 @@ export const vote = createAsyncThunk(
         return res.data;
     }
 )
+
+export const signUp = createAsyncThunk(
+    'user/signup',
+    async (data: any) => {        
+        const res = await axios.post(`${utilContainer.baseUrl}user/signUp`, data);
+        console.log(res.data.data.metadata);
+        return res.data.data.metadata;
+    }
+)

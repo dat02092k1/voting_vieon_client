@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../../store'
 import { Rapper, UsersState } from '../../../types/interface'
-import { logOut, login } from '../api/apiRequest'
+import { logOut, login, signUp } from '../api/apiRequest'
 import { utilFuncs } from '../../../utils/utils'
 import { utilContainer } from '../../../shared/constants/utilContainer'
  
@@ -39,7 +39,7 @@ export const userSlice = createSlice({
       state.loggedIn = false;
     })
     .addCase(login.rejected, (state, action) => {
-      console.log(action);  
+      console.log(action.error.message);  
       state.loading = false;
       state.error = true;    
       state.loggedIn = false; 
@@ -58,6 +58,23 @@ export const userSlice = createSlice({
       console.log(action);  
       state.loading = false;
       state.error = true;    
+    })
+    .addCase(signUp.fulfilled, (state, action) => {
+      console.log(action);
+      state.loading = false; 
+      state.error = false;
+      state.currentUser = action.payload.user;
+      utilFuncs.setStorage(utilContainer.HEADER.AUTHORIZATION, action.payload.token);
+      state.loggedIn = true;
+    })
+    .addCase(signUp.pending, (state) => {
+      state.loading = true;
+      state.error = false;
+    })
+    .addCase(signUp.rejected, (state, action) => {
+      console.log(action.error.message);
+      state.loading = false;
+      state.error = true;
     })
   }
 })

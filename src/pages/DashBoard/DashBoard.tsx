@@ -11,7 +11,7 @@ function DashBoard() {
     const [show, setShow] = useState(false);
   return (
     <>
-    <BaseScreen/>
+    {/* <BaseScreen/> */}
     <ShowContext.Provider value={{show, setShow}}>
       <Header/>
       <Popup/> 

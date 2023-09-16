@@ -8,6 +8,7 @@ import BaseScreen from "./components/BaseScreen/BaseScreen";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
 import Login from "./pages/Login/Login";
 import DashBoard from "./pages/DashBoard/DashBoard";
+import Signup from "./pages/Signup/Signup";
 
 export const ShowContext = createContext<ShowContextType>(); // Export the ShowContext
 
@@ -21,6 +22,12 @@ function App() {
       isPublic: true,
     },
     {
+      path: "/signup",
+      component: <Signup/>,
+      exact: true,
+      isPublic: true,
+    },
+    {
       path: "/",
       component: <DashBoard />,
       exact: true,
@@ -30,6 +37,7 @@ function App() {
   return (
     <>
      <BrowserRouter>
+     <BaseScreen/>
      <Routes>
           {ROUTE.map((e, i) => (
             <Route key={i} path={e.path} element={e.component} />

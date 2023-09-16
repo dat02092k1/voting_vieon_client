@@ -27,7 +27,7 @@ export const rapperSlice = createSlice({
       state.loading = true;
     })
     .addCase(getRappers.rejected, (state, action) => {
-      console.log(action);  
+      console.log(action.error.message);  
       state.loading = false;
       state.rappers = [];
       state.error = false;    

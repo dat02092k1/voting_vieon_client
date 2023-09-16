@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hook";
 import { login } from "../../store/features/api/apiRequest";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Signin() {
   const dispatch = useAppDispatch();
@@ -9,9 +9,6 @@ function Signin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-    // useEffect(() => {
-    //   dispatch(login());
-    // }, [dispatch])
 
     useEffect(() => {
         if (user.currentUser) {
@@ -130,7 +127,7 @@ return (
               <span className="text-white mr-2">Bạn chưa có tài khoản?</span>
 
               <span className="text-[#4facfe] hover:underline cursor-pointer flex w-fit font-bold">
-                Đăng ký ngay
+                <Link to='/signup'>Đăng ký ngay</Link> 
               </span>
             </div>
           </div>
