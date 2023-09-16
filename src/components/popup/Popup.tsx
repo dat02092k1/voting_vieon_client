@@ -18,12 +18,12 @@ const Popup: React.FC = (props: any) => {
     await dispatch(logOut());  
   }
 
-  useEffect(() => {
-        if (!user.currentUser) {
-          console.log('User has logged out:', user.currentUser);
-          handleClosePopup(); 
-        }
-      }, [user.currentUser]);
+  // useEffect(() => {
+  //       if (!user.currentUser) {
+  //         console.log('User has logged out:', user.currentUser);
+  //         handleClosePopup(); 
+  //       }
+  //     }, [user.currentUser]);
   return (
     <>
       {show &&
