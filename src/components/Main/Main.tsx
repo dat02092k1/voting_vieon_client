@@ -23,13 +23,13 @@ function Main() {
   useEffect(() => {
     dispatch(getRappers());
   }, [])
-  const {isLoading, error, data} = useRappers();
+  // const {isLoading, error, data} = useRappers();
 
-  if (isLoading) return 'Loading...';
+  // if (isLoading) return 'Loading...';
 
-  if (error) console.log('An error occurred while fetching the user data ', error);
+  // if (error) console.log('An error occurred while fetching the user data ', error);
 
-  console.log('data', data);
+  // console.log('data', data);
   return (
     <main className='relative z-10 lg:px-0'>
         <div className='mx-auto max-w-[930px]'>

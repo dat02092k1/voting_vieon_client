@@ -16,7 +16,7 @@ export const getRappers = createAsyncThunk(
     async () => {        
         const config = utilFuncs.getStorage(utilContainer.HEADER.AUTHORIZATION); 
         const res = await axios.get(`${utilContainer.baseUrl}contestant`, {});
-        return res.data.data.rappers; 
+        return res.data.data.result.rappers; 
     }
 )
 

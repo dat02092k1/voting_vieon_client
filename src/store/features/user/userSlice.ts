@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../../store'
 import { Rapper, UsersState } from '../../../types/interface'
-import { logOut, login, signUp } from '../api/apiRequest'
+import { logOut, login, signUp, vote } from '../api/apiRequest'
 import { utilFuncs } from '../../../utils/utils'
 import { utilContainer } from '../../../shared/constants/utilContainer'
  
@@ -75,6 +75,9 @@ export const userSlice = createSlice({
       console.log(action.error.message);
       state.loading = false;
       state.error = true;
+    })
+    .addCase(vote.fulfilled, (state) => {
+      if (state.currentUser) state.currentUser.votesRemaining -= 1;
     })
   }
 })
