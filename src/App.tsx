@@ -1,19 +1,19 @@
-import { createContext, useState } from "react";
-import Header from "./components/Header/Header";
-import Main from "./components/Main/Main";
-import Footer from "./components/Footer/Footer";
-import Popup from "./components/popup/Popup";
+import { createContext } from "react";
 import { RouteType, ShowContextType } from "./types/interface";
 import BaseScreen from "./components/BaseScreen/BaseScreen";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Login from "./pages/Login/Login";
 import DashBoard from "./pages/DashBoard/DashBoard";
 import Signup from "./pages/Signup/Signup";
 
-export const ShowContext = createContext<ShowContextType>(); // Export the ShowContext
+const initialShowContextValue: ShowContextType = {
+  setShow: () => {}, // You can provide a default implementation or leave it empty
+  show: false, // Provide an initial value for 'show'
+};
+
+export const ShowContext = createContext<ShowContextType>(initialShowContextValue); // Export the ShowContext
 
 function App() {
-  const [show, setShow] = useState(false);
   const ROUTE: Array<RouteType> = [
     {
       path: "/login",

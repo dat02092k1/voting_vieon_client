@@ -1,9 +1,9 @@
 import React from 'react'
-import { Rapper, RapperProp } from '../../types/interface'
+import { RapperProp } from '../../types/interface'
 
 
 const RapperItem:React.FC<RapperProp> = ({rapper, index, handleVote}) => { 
-  
+
   return (
     <>
     

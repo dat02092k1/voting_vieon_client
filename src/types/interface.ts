@@ -24,12 +24,12 @@ export interface ShowContextType {
 }
 
 export interface Rapper {
-  name: String,
+  name: string,
   votes: [],
-  imgUrl: String,
-  description: String,
-  candicateId: String,
-  id: String
+  imgUrl: string,
+  description: string,
+  candicateId: string,
+  _id: string
 }
 
 export interface RouteType {

@@ -1,5 +1,4 @@
 import React from 'react'
-import CloseBtn from '../Button/CloseBtn/CloseBtn';
 import { Link } from 'react-router-dom';
 import { ShowModal } from '../Main/Main';
 

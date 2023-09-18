@@ -1,7 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import storage from 'redux-persist/lib/storage';
 import { persistReducer, persistStore } from 'redux-persist'
-import thunk from 'redux-thunk';
 import counterReducer from './features/counter/counterSlice'
 import userReducer from './features/user/userSlice'
 import rapperReducer from './features/rapper/rapperSlice'

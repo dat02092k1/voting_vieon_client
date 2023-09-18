@@ -1,5 +1,4 @@
-import React, {useState} from 'react'
-import BaseScreen from '../../components/BaseScreen/BaseScreen'
+import {useState} from 'react'
 import Main from '../../components/Main/Main'
 import Footer from '../../components/Footer/Footer'
 import { ShowContext } from '../../App';

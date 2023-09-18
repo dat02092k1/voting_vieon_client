@@ -1,29 +1,19 @@
-import { useState, createContext, useContext, useEffect } from "react";
+import { useContext } from "react";
 import { ShowContext } from "../../App";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../store/hook";
 import CloseBtn from "../Button/CloseBtn/CloseBtn";
 import { logOut } from "../../store/features/api/apiRequest";
 
-const Popup: React.FC = (props: any) => {
-  const { show, setShow } = useContext(ShowContext);
+const Popup: React.FC = () => {
+  const { show } = useContext(ShowContext);
   const user = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch(); 
-
-  function handleClosePopup() {
-    setShow(!show);
-  }
 
   const handleLogout = async () => {
     await dispatch(logOut());  
   }
 
-  // useEffect(() => {
-  //       if (!user.currentUser) {
-  //         console.log('User has logged out:', user.currentUser);
-  //         handleClosePopup(); 
-  //       }
-  //     }, [user.currentUser]);
   return (
     <>
       {show &&

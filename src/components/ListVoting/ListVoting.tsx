@@ -8,9 +8,16 @@ import { ShowModal } from "../Main/Main";
 
 const ListVoting: React.FC = () => {
   const rappers = useAppSelector((state) => state.rappers.rappers);
-  // const [showModal, setShowModal] = useState(false);
-  const {show, setShow} = React.useContext(ShowModal);
-  const [selectedRapper, setSelectedRapper] = useState<Rapper>({});
+
+  const { setShow} = React.useContext(ShowModal);
+  const [selectedRapper, setSelectedRapper] = useState<Rapper>({
+    _id: "",
+    name: "",
+    description: "",
+    candicateId: "",
+    votes: [],
+    imgUrl: ""
+  });
 
   const handleVote = (rapper:Rapper) => {
     setSelectedRapper(rapper);

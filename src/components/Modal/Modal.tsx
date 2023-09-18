@@ -9,10 +9,15 @@ interface ModalProps {
     rapper: Rapper
 }
 
-const Modal:React.FC<ModalProps> = ({rapper}) =>  { 
-   
-    const {show, setShow} = React.useContext(ShowModal);
+const Modal:React.FC<ModalProps> = (props) =>  { 
+    const {rapper} = props;
+    const {show} = React.useContext(ShowModal);
     const user = useAppSelector((state) => state.user);
+
+    if (!rapper) {
+      return null; // or render a loading state or an error message
+    }
+    
   return (
     <>
     {show &&

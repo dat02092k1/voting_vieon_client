@@ -14,7 +14,6 @@ export const login = createAsyncThunk(
 export const getRappers = createAsyncThunk(
     'rapper/get',
     async () => {        
-        const config = utilFuncs.getStorage(utilContainer.HEADER.AUTHORIZATION); 
         const res = await axios.get(`${utilContainer.baseUrl}contestant`, {});
         return res.data.data.result.rappers; 
     }

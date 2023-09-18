@@ -1,8 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
-import type { RootState } from '../../store'
-import { UsersState, Rapper } from '../../../types/interface'
-import { getRappers, login } from '../api/apiRequest'
+import { Rapper } from '../../../types/interface'
+import { getRappers } from '../api/apiRequest'
  
 // Define the initial state using that type
 const initialState = {
@@ -21,6 +19,7 @@ export const rapperSlice = createSlice({
     builder
     .addCase(getRappers.fulfilled, (state, action) => {
       state.loading = false; 
+      console.log(action.payload)
       state.rappers = action.payload;
     })
     .addCase(getRappers.pending, (state) => {

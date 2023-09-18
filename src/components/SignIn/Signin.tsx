@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hook";
 import { login } from "../../store/features/api/apiRequest";
 import { Link, useNavigate } from "react-router-dom";
@@ -17,7 +17,7 @@ function Signin() {
         }
       }, [user.currentUser, navigate]);
 
-  const handleLogin = async (e) => {
+  const handleLogin = async (e: any) => {
     e.preventDefault();
     const data = {
       email: email,
@@ -70,7 +70,6 @@ return (
           <div className="block w-full focus-visible:border-[#4facfe] mb-4 lg:mb-6">
             <span
               className="block text-sm lg:text-lg text-white mb-2"
-              htmlFor="userName"
             >
               Tên đăng nhập
             </span>
@@ -89,7 +88,6 @@ return (
           <div className="block w-full mb-4 lg:mb-6">
             <span
               className="block text-sm lg:text-lg text-white mb-2"
-              htmlFor="passWord"
             >
               Mật khẩu
             </span>
