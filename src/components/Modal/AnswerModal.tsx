@@ -1,12 +1,10 @@
 import React from "react";
-import CloseBtn from "../Button/CloseBtn/CloseBtn";
 import { ShowModal } from "../Main/Main";
-import { AnswerModalProps } from "../../types/interface";
 import { useAppDispatch, useAppSelector } from "../../store/hook";
 import { vote } from "../../store/features/api/apiRequest";
+import { CandicateProp } from "../../types/interface";
 
-
-const AnswerModal:React.FC = (props: any) => {
+const AnswerModal:React.FC<CandicateProp> = ({candicateId}) => {
   const dispatch = useAppDispatch();
   const currentUser = useAppSelector((state) => state.user.currentUser);
 
@@ -18,7 +16,7 @@ const AnswerModal:React.FC = (props: any) => {
   const handleVote = async () => { 
     const data = {
       'user': currentUser,
-      'candicateId': props.candicateId
+      'candicateId': candicateId
     }
     await dispatch(vote(data)); 
     handleCloseModal(); 

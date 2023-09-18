@@ -23,21 +23,28 @@ export interface ShowContextType {
   show: boolean;
 }
 
-
 export interface Rapper {
   name: String,
   votes: [],
   imgUrl: String,
   description: String,
-  candicateId: {
-      type: String,
-  }
+  candicateId: String,
   id: String
 }
 
-export type RouteType = {
+export interface RouteType {
   path: string;
   component: any;
   exact: boolean;
   isPublic: boolean;
 };
+
+export interface RapperProp {
+  rapper: Rapper 
+  index: number 
+  handleVote(rapper: Rapper): void
+} 
+
+export interface CandicateProp {
+  candicateId: string,
+}
