@@ -1,6 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit'
-// import type { PayloadAction } from '@reduxjs/toolkit'
-// import type { RootState } from '../../store'
 import { UsersState } from '../../../types/interface'
 import { logOut, login, signUp, vote } from '../api/apiRequest'
 import { utilFuncs } from '../../../utils/utils'
@@ -16,10 +14,8 @@ const initialState = {
 
 export const userSlice = createSlice({
   name: 'user',
-  // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
-    // Use the PayloadAction type to declare the contents of `action.payload`
     logout: (state) => {
       state.currentUser = null;
       state.error = false;
@@ -83,8 +79,5 @@ export const userSlice = createSlice({
 })
 
 export const { logout } = userSlice.actions
-
-// Other code such as selectors can use the imported `RootState` type
-// export const selectCount = (state: RootState) => state.counter.value
-
+ 
 export default userSlice.reducer;

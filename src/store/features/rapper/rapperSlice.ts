@@ -2,7 +2,6 @@ import { createSlice } from '@reduxjs/toolkit'
 import { Rapper } from '../../../types/interface'
 import { getRappers } from '../api/apiRequest'
  
-// Define the initial state using that type
 const initialState = {
   rappers: [] as Rapper[],
   loading: false,
@@ -11,7 +10,6 @@ const initialState = {
 
 export const rapperSlice = createSlice({
   name: 'rappers',
-  // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
   },
@@ -34,9 +32,5 @@ export const rapperSlice = createSlice({
   }
 })
 
-export const {  } = rapperSlice.actions
-
-// Other code such as selectors can use the imported `RootState` type
-// export const selectCount = (state: RootState) => state.counter.value
-
+export const {  } = rapperSlice.actions;
 export default rapperSlice.reducer;

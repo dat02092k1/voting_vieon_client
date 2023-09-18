@@ -7,11 +7,11 @@ import DashBoard from "./pages/DashBoard/DashBoard";
 import Signup from "./pages/Signup/Signup";
 
 const initialShowContextValue: ShowContextType = {
-  setShow: () => {}, // You can provide a default implementation or leave it empty
-  show: false, // Provide an initial value for 'show'
+  setShow: () => {},  
+  show: false,  
 };
 
-export const ShowContext = createContext<ShowContextType>(initialShowContextValue); // Export the ShowContext
+export const ShowContext = createContext<ShowContextType>(initialShowContextValue);  
 
 function App() {
   const ROUTE: Array<RouteType> = [
