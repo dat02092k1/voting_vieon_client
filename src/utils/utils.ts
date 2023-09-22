@@ -23,6 +23,10 @@ class UtilFuncs {
       "authorization": `Bearer ${utilFuncs.getStorage(utilContainer.HEADER.AUTHORIZATION)}`,
     };
   };
+
+  getPathName = (route: string) => {
+    return (window.location.pathname === route);
+  }
 }
 
 export const utilFuncs = new UtilFuncs();

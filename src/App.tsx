@@ -1,17 +1,22 @@
 import { createContext } from "react";
 import { RouteType, ShowContextType } from "./types/interface";
 import BaseScreen from "./components/BaseScreen/BaseScreen";
-import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Login from "./pages/Login/Login";
 import DashBoard from "./pages/DashBoard/DashBoard";
 import Signup from "./pages/Signup/Signup";
+import Admin from "./pages/Admin/Admin";
+import { utilFuncs } from "./utils/utils";
+import NotFound from "./pages/NotFound/NotFound";
 
 const initialShowContextValue: ShowContextType = {
-  setShow: () => {},  
-  show: false,  
+  setShow: () => {},
+  show: false,
 };
 
-export const ShowContext = createContext<ShowContextType>(initialShowContextValue);  
+export const ShowContext = createContext<ShowContextType>(
+  initialShowContextValue
+);
 
 function App() {
   const ROUTE: Array<RouteType> = [
@@ -23,7 +28,7 @@ function App() {
     },
     {
       path: "/signup",
-      component: <Signup/>,
+      component: <Signup />,
       exact: true,
       isPublic: true,
     },
@@ -32,19 +37,34 @@ function App() {
       component: <DashBoard />,
       exact: true,
       isPublic: true,
-    }
-  ]
+    },
+    {
+      path: "/admin",
+      component: <Admin />,
+      exact: true,
+      isPublic: false, 
+    },
+    {
+      path: "/notfound",
+      component: <NotFound />,
+      exact: true,
+      isPublic: true,
+    },
+  ];
+
   return (
     <>
-     <BrowserRouter>
-     <BaseScreen/>
-     <Routes>
+      <BrowserRouter>
+     
+        <Routes>
           {ROUTE.map((e, i) => (
-            <Route key={i} path={e.path} element={e.component} />
+            <Route key={i} path={e.path} element={e.component}/>
           ))}
+          <Route path="*" element={<Navigate to="/notfound" />} />
+          
         </Routes>
-     </BrowserRouter>
-       
+         
+      </BrowserRouter>
     </>
   );
 }

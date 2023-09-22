@@ -9,11 +9,11 @@ function Signin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-
+                  
     useEffect(() => {
         if (user.currentUser) {
           console.log('User has logged in:', user.currentUser);
-          navigate("/");
+          user.currentUser.role === 'admin' ? navigate("/admin") : navigate("/");
         }
       }, [user.currentUser, navigate]);
 

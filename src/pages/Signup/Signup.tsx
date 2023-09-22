@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react'
 import { useAppDispatch, useAppSelector } from '../../store/hook';
 import { useNavigate } from 'react-router-dom';
 import { signUp } from '../../store/features/api/apiRequest';
+import BaseScreen from '../../components/BaseScreen/BaseScreen';
 
 function Signup() {
     const dispatch = useAppDispatch();
@@ -27,6 +28,8 @@ function Signup() {
     await dispatch(signUp(data));
   };
     return (
+     <>
+      <BaseScreen/>
         <div className="mx-auto w-full sm:w-[680px] lg:w-[720px] 2xl:w-[900px] overflow-y-auto overflow-x-hidden scrollbar bg-[#000] h-min max-h-[90vh] relative z-20">
           <button className="absolute top-2 right-2 w-4 h-4 z-10" title="Close">
             <svg
@@ -120,7 +123,7 @@ function Signup() {
               </div>
             </form>
           </div>
-        </div>
+        </div></>
       );
 }
 
