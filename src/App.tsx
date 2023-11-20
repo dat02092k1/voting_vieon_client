@@ -8,6 +8,8 @@ import Signup from "./pages/Signup/Signup";
 import Admin from "./pages/Admin/Admin";
 import { utilFuncs } from "./utils/utils";
 import NotFound from "./pages/NotFound/NotFound";
+import Users from "./components/Admin/Users/Users";
+import Rappers from "./components/Admin/Rappers/Rappers";
 
 const initialShowContextValue: ShowContextType = {
   setShow: () => {},
@@ -43,6 +45,18 @@ function App() {
       component: <Admin />,
       exact: true,
       isPublic: false, 
+    },
+    {
+      path: "/admin/users",
+      component: <Users />,
+      exact: true,
+      isPublic: true,
+    },
+    {
+      path: "/admin/rappers",
+      component: <Rappers />,
+      exact: true,
+      isPublic: true,
     },
     {
       path: "/notfound",

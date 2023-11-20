@@ -1,21 +1,19 @@
 import React, {useState} from 'react'
 import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
 import { Layout, Menu, theme } from 'antd';
-import Admin_Header from '../../components/Admin/Header/Admin_Header';
-import vieon from '../../assets/img/vieon_1.png';
+import vieon from '../../../assets/img/vieon_1.png';
 import { Link, Route, Routes } from 'react-router-dom';
-import Users from '../../components/Admin/Users/Users';
+import Admin_Header from '../Header/Admin_Header';
+import InputSearch from '../Management/Input/InputSearch';
+import TableUser from '../Management/Table/TableUser';
 
 const { Header, Content, Footer, Sider } = Layout;
 
-function Admin() {
+function Users() {
   const {
     token: { colorBgContainer },
   } = theme.useToken();
-
-  const NavFun = () => {
-    console.log('nav')
-  }
+ 
   return (
     <div className='absolute bottom-0 left-0 right-0 z-0 h-screen w-full'>
       <Layout className='h-full'>
@@ -51,7 +49,8 @@ function Admin() {
          <Admin_Header />
         <Content style={{ margin: '24px 16px 0' }}>
           <div style={{ padding: 24, minHeight: 360, background: colorBgContainer }}>
-             
+                <InputSearch/>
+                <TableUser/>
           </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>Ant Design ©2023 Created by Ant UED</Footer>
@@ -61,4 +60,4 @@ function Admin() {
   )
 }
 
-export default Admin
+export default Users
